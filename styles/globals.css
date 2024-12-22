@@ -20,6 +20,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.black_btn {
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-sans flex items-center justify-center;
+}
+
+.blue_btn {
+  @apply rounded-xl border border-[#575cff] bg-[#575cff] py-1.5 px-5 text-white transition-all hover:bg-white hover:text-[#575cff] text-center text-sm font-sans flex items-center justify-center;
+}
+
 .app {
   @apply relative z-10 max-w-7xl mx-auto sm:px-16 px-6;
 }
