@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 let isConnected = false;
 
 export const connectToDB = async () => {
+  console.log("Connecting to MongoDB...");
   mongoose.set("strictQuery", true);
 
   if (isConnected) {
@@ -12,7 +13,7 @@ export const connectToDB = async () => {
 
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: "todos",
+      dbName: "DreamAndDoDigital",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
