@@ -1,4 +1,5 @@
-import { Schema, SchemaType, model, models } from "mongoose";
+import { Schema, model, models } from "mongoose";
+import { getMonth } from "date-fns";
 
 const WeekSchema = new Schema({
   weekNumber: {
@@ -17,7 +18,7 @@ const WeekSchema = new Schema({
   ],
   month: {
     type: Schema.Types.ObjectId,
-    ref: "Month",
+    ref: "Month", // Dynamisk reference til måned
   },
   goals: [
     {
@@ -25,6 +26,29 @@ const WeekSchema = new Schema({
       ref: "Goal",
     },
   ],
+  challenges: [
+    {
+      type: String,
+    },
+  ],
+});
+
+// Middleware til at finde den tilhørende måned
+WeekSchema.pre("save", async function (next) {
+  const monthNumber =
+    getMonth(new Date(this.year, 0, (this.weekNumber - 1) * 7)) + 1;
+
+  // Find eller opret måneden
+  const Month = models.Month || model("Month");
+  let month = await Month.findOne({ monthNumber, year: this.year });
+
+  if (!month) {
+    month = new Month({ monthNumber, year: this.year });
+    await month.save();
+  }
+
+  this.month = month._id; // Sæt reference til måned
+  next();
 });
 
 const Week = models.Week || model("Week", WeekSchema);

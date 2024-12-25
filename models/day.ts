@@ -1,6 +1,5 @@
 import { Schema, model, models } from "mongoose";
-import { getISOWeek, getMonth, getYear } from "date-fns";
-import Week from "@/models/week";
+import { getISOWeek, getYear } from "date-fns";
 
 const DaySchema = new Schema({
   date: {
@@ -10,7 +9,7 @@ const DaySchema = new Schema({
   todos: [
     {
       type: Schema.Types.ObjectId,
-      ref: "todos", // Refererer til 'todos'-collectionen
+      ref: "todos",
     },
   ],
   reflection: {
@@ -24,27 +23,28 @@ const DaySchema = new Schema({
   },
   week: {
     type: Schema.Types.ObjectId,
-    ref: "Week", // Reference til en uge (du skal oprette Week-model)
+    ref: "Week", // Dynamisk reference til uge
   },
 });
 
+// Middleware til at finde den tilhørende uge
 DaySchema.pre("save", async function (next) {
-  const weekNumber = getISOWeek(this.date); // Beregn ugenummer
-  const year = getYear(this.date); // Beregn året
+  const weekNumber = getISOWeek(this.date);
+  const year = getYear(this.date);
 
-  // Find eller opret uge
+  // Find eller opret den uge, som dagen tilhører
+  const Week = models.Week || model("Week");
   let week = await Week.findOne({ weekNumber, year });
+
   if (!week) {
-    week = new Week({ weekNumber, year, days: [] });
+    week = new Week({ weekNumber, year });
     await week.save();
   }
 
-  // Sæt week til Week's _id
-  this.week = week._id;
-
+  this.week = week._id; // Sæt reference til uge
   next();
 });
 
-const Day = models.Day || model("days", DaySchema);
+const Day = models.Day || model("Day", DaySchema);
 
 export default Day;
