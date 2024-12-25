@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, SchemaType, model, models } from "mongoose";
 
 const WeekSchema = new Schema({
   weekNumber: {
@@ -12,16 +12,17 @@ const WeekSchema = new Schema({
   days: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Day", // Reference til Days
+      ref: "Day",
     },
   ],
   month: {
     type: Schema.Types.ObjectId,
-    ref: "Month", // Reference til Month
+    ref: "Month",
   },
   goals: [
     {
-      type: String, // Goals som tekst
+      type: Schema.Types.ObjectId,
+      ref: "Goal",
     },
   ],
 });
