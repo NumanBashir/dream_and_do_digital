@@ -15,23 +15,23 @@ const MonthSchema = new Schema({
       ref: "Week",
     },
   ],
-  goals: [
+  monthlyGoals: [
     {
       type: Schema.Types.ObjectId,
       ref: "Goal",
     },
   ],
-  challenges: [
+  monthlyChallenges: [
     {
       type: String,
     },
   ],
-  rewards: [
+  monthlyRewards: [
     {
       type: String,
     },
   ],
-  monthReflection: [
+  monthlyReflection: [
     {
       type: String,
     },

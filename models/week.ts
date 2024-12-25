@@ -20,13 +20,13 @@ const WeekSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Month", // Dynamisk reference til måned
   },
-  goals: [
+  weeklyGoals: [
     {
       type: Schema.Types.ObjectId,
       ref: "Goal",
     },
   ],
-  challenges: [
+  weeklyChallenges: [
     {
       type: String,
     },

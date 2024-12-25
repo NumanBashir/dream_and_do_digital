@@ -11,7 +11,7 @@ const YearSchema = new Schema({
       ref: "Month",
     },
   ],
-  goals: [
+  yearlyGoals: [
     {
       type: Schema.Types.ObjectId,
       ref: "Goal",
