@@ -15,10 +15,10 @@ const Nav = () => {
           <Link href="/" className="blue_btn">
             {formatedDate}
           </Link>
-          <Link href="/services" className="blue_btn">
+          <Link href="/current-week" className="blue_btn">
             Current Week
           </Link>
-          <Link href="/contact" className="blue_btn">
+          <Link href="/current-month" className="blue_btn">
             Current Month
           </Link>
         </div>
