@@ -1,17 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getISOWeek } from "date-fns";
 
-const CurrentWeek = () => {
-  const getCurrentWeek = () => {
+const CurrentWeek: React.FC = () => {
+  const [currentWeek, setCurrentWeek] = useState<number | null>(null);
+
+  useEffect(() => {
     const today = new Date();
     const weekNumber = getISOWeek(today);
-
-    return weekNumber;
-  };
-
-  const currentWeek = getCurrentWeek();
+    setCurrentWeek(weekNumber);
+  }, []);
 
   return <div>Uge nr: {currentWeek}</div>;
 };

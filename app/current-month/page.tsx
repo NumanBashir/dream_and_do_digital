@@ -1,16 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const CurrentMonth = () => {
-  const getCurrentMonth = () => {
+const CurrentMonth: React.FC = () => {
+  const [currentMonth, setCurrentMonth] = useState<string | null>(null);
+
+  useEffect(() => {
     const today = new Date();
-    const monthName = today.toLocaleString("default", { month: "long" });
-
-    return monthName;
-  };
-
-  const currentMonth = getCurrentMonth();
+    const month = today.toLocaleString("default", { month: "long" });
+    setCurrentMonth(month);
+  }, []);
 
   return <div>Måned: {currentMonth}</div>;
 };
