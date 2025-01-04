@@ -5,8 +5,12 @@ const TodoSchema = new Schema({
     type: String,
     required: [true, "Please provide a name for the todo"],
   },
+  completed: {
+    type: Boolean,
+    default: false, // New todos are incomplete by default
+  },
 });
 
-const Todo = models.Todo || model("todos", TodoSchema);
+const Todo = models.Todo || model("Todo", TodoSchema);
 
 export default Todo;
