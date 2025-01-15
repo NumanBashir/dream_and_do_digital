@@ -11,7 +11,7 @@ const CurrentMonth: React.FC = () => {
     setCurrentMonth(month);
   }, []);
 
-  return <div>Måned: {currentMonth}</div>;
+  return <div>Month: {currentMonth}</div>;
 };
 
 export default CurrentMonth;

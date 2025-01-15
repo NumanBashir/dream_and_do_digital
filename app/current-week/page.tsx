@@ -12,7 +12,7 @@ const CurrentWeek: React.FC = () => {
     setCurrentWeek(weekNumber);
   }, []);
 
-  return <div>Uge nr: {currentWeek}</div>;
+  return <div>Week nr: {currentWeek}</div>;
 };
 
 export default CurrentWeek;

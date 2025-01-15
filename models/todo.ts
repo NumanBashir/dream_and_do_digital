@@ -5,6 +5,10 @@ const TodoSchema = new Schema({
     type: String,
     required: [true, "Please provide a name for the todo"],
   },
+  date: {
+    type: String,
+    required: true
+  },
   completed: {
     type: Boolean,
     default: false, // New todos are incomplete by default

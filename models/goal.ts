@@ -5,6 +5,11 @@ const GoalSchema = new Schema({
     type: String,
     required: [true, "Please provide a name for the goal"],
   },
+  type: { type: String, enum: ["weekly", "monthly", "yearly"], required: true },
+  weekNumber: { type: Number },
+  monthNumber: { type: Number },
+  year: { type: Number, required: true },
+  completed: { type: Boolean, default: false },
 });
 
 const Goal = models.Goal || model("goals", GoalSchema);
