@@ -9,7 +9,7 @@ const Nav = () => {
   const formatedDate = format(currentDate, "dd MMMM, yyyy");
 
   return (
-    <nav className="flex-center w-full mb-8 pt-3">
+    <nav className="flex-center w-full my-8">
       <div className="sm:flex hidden">
         <div className="flex gap-3 md:gap-5">
           <Link href="/" className="blue_btn">
