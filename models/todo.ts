@@ -6,8 +6,8 @@ const TodoSchema = new Schema({
     required: [true, "Please provide a name for the todo"],
   },
   date: {
-    type: String,
-    required: true,
+    type: Date,
+    required: [true, "Todo must have a date"],
   },
   completed: {
     type: Boolean,
