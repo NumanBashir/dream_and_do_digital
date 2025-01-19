@@ -11,7 +11,7 @@ const TodoSchema = new Schema({
   },
   completed: {
     type: Boolean,
-    default: false, // New todos are incomplete by default
+    default: false,
   },
 });
 

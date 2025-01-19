@@ -1,6 +1,6 @@
 import Todo from "@/models/todo";
 import { connectToDB } from "@/utils/database";
-import { format } from "date-fns";
+import { format, isValid } from "date-fns";
 
 export const GET = async (request: any) => {
   try {
@@ -9,10 +9,13 @@ export const GET = async (request: any) => {
     const todos = await Todo.find({});
 
     // Format the date to MM/dd/yyyy
-    const formattedTodos = todos.map((todo) => ({
-      ...todo.toObject(),
-      date: format(new Date(todo.date), "MM/dd/yyyy"),
-    }));
+    const formattedTodos = todos.map((todo) => {
+      const date = new Date(todo.date);
+      return {
+        ...todo.toObject(),
+        date: isValid(date) ? format(date, "MM/dd/yyyy") : "Invalid date",
+      };
+    });
 
     return new Response(JSON.stringify(formattedTodos), { status: 200 });
   } catch (error) {

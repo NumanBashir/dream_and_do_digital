@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 let isConnected = false;
-let MONGODB_URI = "mongodb+srv://sportybashir:password123!@dreamanddodigitalcluste.qo9qu.mongodb.net/?retryWrites=true&w=majority&appName=DreamAndDoDigitalCluster"
 
 export const connectToDB = async () => {
   console.log("Connecting to MongoDB...");
@@ -13,7 +12,7 @@ export const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(MONGODB_URI, {
+    await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "DreamAndDoDigital",
       useNewUrlParser: true,
       useUnifiedTopology: true,
