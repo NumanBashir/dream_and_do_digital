@@ -28,6 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Background Gradient */}
+        <div className="absolute inset-0 gradient"></div>
         <main className="app">
           <Nav />
           {children}

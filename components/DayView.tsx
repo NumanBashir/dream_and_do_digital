@@ -16,8 +16,8 @@ const DayView = () => {
 
   return (
     <div>
-      <div className="card bg-base-100 w-60 shadow-xl my-4">
-        <div className="bg-blue-500 text-white py-4 px-6 rounded-t-lg">
+      <div className="card bg-base-100 w-60 shadow-xl my-2">
+        <div className="blue_topbar text-white py-4 px-6 rounded-t-lg">
           <h2 className="text-lg font-semibold flex-center">{formatedDate}</h2>
         </div>
 
