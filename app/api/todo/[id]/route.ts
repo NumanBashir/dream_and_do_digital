@@ -31,6 +31,7 @@ export const GET = async (
     Example request body:
     {
         "todoName": "New todo name",
+        "date": "04/05/2015",
         "completed": true
     }
 */

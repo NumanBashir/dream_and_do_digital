@@ -7,7 +7,7 @@ const TodoSchema = new Schema({
   },
   date: {
     type: Date,
-    required: [true, "Todo must have a date"],
+    required: false,
   },
   completed: {
     type: Boolean,
