@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { addDays, format } from "date-fns";
-import { log } from "console";
+import { format } from "date-fns";
 
 const Nav = () => {
   const currentDate = new Date();

@@ -1,11 +1,15 @@
 import React from "react";
+import { addDays, format } from "date-fns";
 
 const DayView = () => {
+  const currentDate = new Date();
+  const formatedDate = format(currentDate, "eeee, dd/MM");
+
   return (
     <div>
       <div className="card bg-base-100 w-60 shadow-xl my-4">
         <div className="bg-blue-500 text-white py-4 px-6 rounded-t-lg">
-          <h2 className="text-lg font-semibold flex-center">Mandag</h2>
+          <h2 className="text-lg font-semibold flex-center">{formatedDate}</h2>
         </div>
 
         {/* Todos section */}
