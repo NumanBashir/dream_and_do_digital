@@ -1,6 +1,16 @@
 import { Schema, model, models } from "mongoose";
 
-const GoalSchema = new Schema({
+interface IGoal {
+  goalName: string;
+  type: "weekly" | "monthly" | "yearly";
+  weekNumber?: number;
+  monthNumber?: number;
+  year: number;
+  startDate: Date;
+  completed: boolean;
+}
+
+const GoalSchema = new Schema<IGoal>({
   goalName: {
     type: String,
     required: [true, "Please provide a name for the goal"],
@@ -12,12 +22,22 @@ const GoalSchema = new Schema({
   },
   weekNumber: {
     type: Number,
+    required: function (this: IGoal) {
+      return this.type === "weekly";
+    },
   },
   monthNumber: {
     type: Number,
+    required: function (this: IGoal) {
+      return this.type === "monthly";
+    },
   },
   year: {
     type: Number,
+    required: true,
+  },
+  startDate: {
+    type: Date,
     required: true,
   },
   completed: {
@@ -26,6 +46,6 @@ const GoalSchema = new Schema({
   },
 });
 
-const Goal = models.Goal || model("goals", GoalSchema);
+const Goal = models.Goal || model<IGoal>("Goal", GoalSchema);
 
 export default Goal;
